@@ -18,12 +18,23 @@ function setup() {
   poseNet.on('pose',gotPoses);
 }
 
+function gotPoses(results)
+{
+  if(results.length > 0)
+  {
+	console.log(results);
+    rightWristX = results[0].pose.rightWrist.x;
+    rightwristY = results[0].pose.rightWrist.y;
+    
+  }
+}
+
 function modelLoaded(){
   console.log("Model loaded!")
 }
 
 function draw() {
   background("#D3D3D3");
-  image(img,marioX, marioY, 40,70);
+  image(img,rightWristX, rightWrirstY, 40,70);
   
 }
